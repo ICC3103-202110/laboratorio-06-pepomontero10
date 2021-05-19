@@ -58,7 +58,7 @@ function update(input, model){
                 conversion = temp + 273.15
             }
             if(to == 'Fahrenheit'){
-                conversion = (temp *(9/5))+35
+                conversion = (temp *(9/5)) + 35
             }
         }
         if(from == 'Kelvin'){
