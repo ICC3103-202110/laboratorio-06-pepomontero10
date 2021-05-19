@@ -15,44 +15,53 @@ function getTitle(){
 }
 
 function getTable(model){
-    const {counter} = model
+    const {new_leftvalue} = model
+    const {new_leftunit} = model
+    const {new_rightvalue} = model
+    const {new_rightunit} = model
     return [
-        {Counter: counter},
+        {LeftValue: new_leftvalue, LeftUnit: new_leftunit, 
+        RightValue: new_rightvalue, RightUnit: new_rightunit},
     ]
 }
 
 function inputForm(model){
     const {input} = model
-    const message = 'Increase or decrease?'
+    const message = 'Left temperature is source?'
+    const message2 = 'Temperature value to convert?'
+    const message3 = 'From?'
+    const message4 = 'To?'
+    const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
     return inquirer.prompt([
         {
-            name: 'input',
-            type: 'input',
+            name: 'left',
+            type: 'confirm',
             message: message,
+            default: '(Y/n)',
+        },
+        {
+            name: 'temp',
+            type: 'number',
+            message: message2,
+            default: 0,
+        },
+        {
+            name: 'from',
+            type: 'list',
+            message: message3,
             default: input,
-            validate: function(value){
-                if(value === '+' || value === '-'){
-                    return true
-                } else {
-                    return 'Enter + or -'
-                }
-            }
+            choices: choices
+        },
+        {
+            name: 'to',
+            type: 'list',
+            message: message4,
+            default: input,
+            choices: choices
         }
     ])
 }
 
-function listForm(model){
-    const {input} = model
-    const message = 'Increase or decrease?'
-    const choices = ['+', '-']
-    return inquirer.prompt({
-        name: 'input',
-        type: 'list',
-        message: message,
-        default: input,
-        choices: choices
-    })
-}
 
 // Get actual console view
 function view(model){
@@ -64,6 +73,5 @@ function view(model){
 
 module.exports = {
     view, 
-    inputForm,
-    listForm
+    inputForm
 }
