@@ -34,7 +34,7 @@ function inputForm(model){
     const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
     return inquirer.prompt([
         {
-            name: 'left',
+            name: 'left_right',
             type: 'confirm',
             message: message,
             default: '(Y/n)',

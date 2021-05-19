@@ -1,10 +1,10 @@
 function update(input, model){
-    const {left} = input
+    const {left_right} = input
     const {temp} = input
     const {from} = input
     const {to} = input
     var {conversion} = 0
-    if(left){
+    if(left_right){
         if(from == 'Celsius'){
             if(to == 'Celsius'){
                 conversion = temp
